@@ -4,12 +4,6 @@ using BuberDinner.Domain.Entities;
 
 namespace BuberDinner.Application.Services.Authentication;
 
-public interface IAuthenticationService
-{
-    AuthenticationResult Register(string firstName, string lastName, string email, string password);
-    AuthenticationResult Login(string firstName, string lastName);
-}
-
 public class AuthenticationService : IAuthenticationService
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
@@ -28,7 +22,14 @@ public class AuthenticationService : IAuthenticationService
             throw new Exception("User with given email already exist.");
         }
 
-        var user = new User { Id = Guid.NewGuid(), FirstName = firstName, LastName = lastName, Email = email, Password = password };
+        var user = new User
+        {
+            Id = Guid.NewGuid(),
+            FirstName = firstName,
+            LastName = lastName,
+            Email = email,
+            Password = password
+        };
         _userRepository.Add(user);
         var token = _jwtTokenGenerator.GenerateToken(user);
         return new AuthenticationResult(user, token);

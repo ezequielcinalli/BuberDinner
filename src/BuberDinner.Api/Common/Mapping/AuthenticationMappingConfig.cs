@@ -1,6 +1,7 @@
-﻿using BuberDinner.Application.Authentication.Commands;
+﻿using BuberDinner.Application.Authentication.Commands.Register;
+using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Application.Authentication.Queries;
-using BuberDinner.Application.Services.Authentication.Common;
+using BuberDinner.Application.Authentication.Queries.Login;
 using BuberDinner.Contracts.Authentication;
 using Mapster;
 

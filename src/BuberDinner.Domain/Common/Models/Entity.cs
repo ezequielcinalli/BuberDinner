@@ -2,12 +2,12 @@
 
 public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
 {
-    protected Entity(TId id)
+    protected Entity(TId menuItemId)
     {
-        Id = id;
+        MenuItemId = menuItemId;
     }
 
-    public TId Id { get; protected set; }
+    public TId MenuItemId { get; protected set; }
 
     public bool Equals(Entity<TId>? other)
     {
@@ -16,7 +16,7 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
 
     public override bool Equals(object? obj)
     {
-        return obj is Entity<TId> entity && Id.Equals(entity.Id);
+        return obj is Entity<TId> entity && MenuItemId.Equals(entity.MenuItemId);
     }
 
     public static bool operator ==(Entity<TId> left, Entity<TId> right)
@@ -31,6 +31,6 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
 
     public override int GetHashCode()
     {
-        return Id.GetHashCode();
+        return MenuItemId.GetHashCode();
     }
 }
